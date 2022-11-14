@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0 none;
+}
+
+body{
+   height: 100vh;
+   width: 100vw;
+}
+
+#gameboard{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#gameboard__scoreboard{
+    position: absolute;
+    top: 5%;
+    left: 10%;
+}
