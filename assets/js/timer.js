@@ -1,39 +1,36 @@
 class Timer {
-    constructor() {
-        this.CurrentValue = 10 * 1000;
-        this.Interval = setInterval(() => {
-            this.CurrentValue -= 100;
 
-            if (this.CurrentValue <= 0) {
-                clearInterval(this.Interval);
-            }
-            this.DisplayTimer();
-            console.log(this.CurrentValue);
-        }, 100);
+    constructor() {
+
     }
 
     StartTimer() {
+        this.Interval = setInterval(() => {
+            this.CurrentValue -= 100;
+            this.DisplayTimer();
 
+            if (this.CurrentValue <= 0) {
+                this.StopTimer();
+                this.callback();
+            }
+
+        }, 100);
     }
 
-    OnCountdown() {
-
-    }
-
-    OnTimeUpEvent() {
-
+    OnTimeUpEvent(callback) {
+        this.callback = callback;
     }
 
     StopTimer() {
-
+        clearInterval(this.Interval);
     }
 
-    ResetTimer() {
-
+    ResetTimer(startAmountInSeconds) {
+        this.CurrentValue = startAmountInSeconds * 1000;
     }
 
     DisplayTimer() {
         let gameboard__timer = document.getElementById('gameboard__timer');
-        gameboard__timer.innerHTML = this.CurrentValue;
+        gameboard__timer.innerHTML = (parseFloat(this.CurrentValue / 1000.0).toFixed(1)).padStart(4, '0');
     }
 }
