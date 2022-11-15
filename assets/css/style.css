@@ -1,16 +1,16 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     border: 0 none;
 }
 
-body{
-   height: 100vh;
-   width: 100vw;
+body {
+    height: 100vh;
+    width: 100vw;
 }
 
-#gameboard{
+#gameboard {
     flex-direction: column;
     display: flex;
     align-items: center;
@@ -18,8 +18,13 @@ body{
     height: 100vh;
 }
 
-#gameboard__scoreboard{
+#gameboard__scoreboard {
     position: absolute;
     top: 5%;
     left: 10%;
+}
+
+#gameboard__container progress {
+    rotate: -90deg;
+    margin-top: 50%;
 }

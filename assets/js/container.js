@@ -1,31 +1,38 @@
 class Container {
     constructor() {
-        this.Percentage = 0;
+        this.container = document.querySelector("#gameboard__container progress");
     }
 
     Initialize(startValue) {
-
+        this.Percentage = startValue;
+        this.UpdateContent();
     }
 
     Increase(value) {
-
+        this.Percentage += value;
+        if (this.Percentage >= 100) {
+            this.callbackFull();
+        }
+        this.UpdateContent();
     }
 
-    CurrentValue() {
-
+    Decrease(value) {
+        this.Percentage -= value;
+        if (this.Percentage <= 0) {
+            this.callbackEmpty();
+        }
+        this.UpdateContent();
     }
 
-    OnContainerFull() {
-
+    UpdateContent() {
+        this.container.value = this.Percentage;
     }
 
-    OnContainerEmpty() {
+    OnContainerFull(callbackFull) {
+        this.callbackFull = callbackFull;
+    }
 
+    OnContainerEmpty(callbackEmpty) {
+        this.callbackEmpty = callbackEmpty;
     }
 }
-
-
-
-/*
-About the container:- OnContainerFull()- ()- 
-*/
