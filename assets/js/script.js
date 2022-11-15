@@ -1,1 +1,3 @@
-let x = new Container();
+let timer = new Timer();
+// timer.StartTimer();
+// timer.DisplayTimer();
