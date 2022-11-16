@@ -1,6 +1,7 @@
 class Container {
     constructor() {
         this.container = document.querySelector("#gameboard__container progress");
+        this.isFreezed = false;
     }
 
     Initialize(startValue) {
@@ -12,6 +13,7 @@ class Container {
         this.Percentage += value;
         if (this.Percentage >= 100) {
             this.callbackFull();
+            this.Freeze();
         }
         this.UpdateContent();
     }
@@ -20,8 +22,14 @@ class Container {
         this.Percentage -= value;
         if (this.Percentage <= 0) {
             this.callbackEmpty();
+            this.Freeze();
         }
         this.UpdateContent();
+    }
+
+    Freeze() {
+        this.isFreezed = true;
+        // TODO: freeze the cat some how
     }
 
     UpdateContent() {

@@ -1,12 +1,13 @@
 class Timer {
 
     constructor() {
-
+        this.HowMuchPassed = 0;
     }
 
     StartTimer() {
         this.Interval = setInterval(() => {
             this.CurrentValue -= 100;
+            this.HowMuchPassed += 100;
             this.DisplayTimer();
 
             if (this.CurrentValue <= 0) {
@@ -27,6 +28,7 @@ class Timer {
 
     ResetTimer(startAmountInSeconds) {
         this.CurrentValue = startAmountInSeconds * 1000;
+        this.HowMuchPassed = 0;
     }
 
     DisplayTimer() {
