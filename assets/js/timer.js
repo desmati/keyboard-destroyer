@@ -30,7 +30,7 @@ class Timer {
     }
 
     DisplayTimer() {
-        let gameboard__timer = document.getElementById('gameboard__timer');
-        gameboard__timer.innerHTML = (parseFloat(this.CurrentValue / 1000.0).toFixed(1)).padStart(4, '0');
+        let gameboardTimer = document.getElementById('gameboard__timer');
+        gameboardTimer.innerHTML = (parseFloat(this.CurrentValue / 1000.0).toFixed(1)).padStart(4, '0');
     }
 }

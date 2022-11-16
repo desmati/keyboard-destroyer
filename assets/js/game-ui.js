@@ -1,6 +1,6 @@
 class GameUI {
     constructor() {
-        this.gameboard__key = document.getElementById('gameboard__key');
+        this.gameboardkey = document.getElementById('gameboard__key');
 
         this.KeyList = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
         this.MaxKeyPress = 0;
@@ -32,7 +32,7 @@ class GameUI {
     }
 
     DisplayKey() {
-        this.gameboard__key.innerHTML = this.CurrentKey;
+        this.gameboardkey.innerHTML = this.CurrentKey;
     }
 
     DisplayKeySpeed() {
