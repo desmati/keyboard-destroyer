@@ -10,7 +10,7 @@ class Dialog {
         });
     }
 
-    Display(content, showClose) {
+    Display(content, showClose = true) {
         this.dialogContentElement.innerHTML = content;
         this.dialogElement.style.display = "flex";
 
