@@ -5,12 +5,11 @@ class Dialog {
         this.dialogContentElement = document.getElementById('dialog__content');
 
         this.dialogCloseElement.addEventListener('click', () => {
-            this.dialogContentElement = "";
-            this.dialogElement.style.display = "none";
+            this.Close();
         });
     }
 
-    Display(content, showClose = true) {
+    Display(content, showClose) {
         this.dialogContentElement.innerHTML = content;
         this.dialogElement.style.display = "flex";
 
@@ -19,5 +18,10 @@ class Dialog {
         } else {
             this.dialogCloseElement.style.display = "none";
         }
+    }
+
+    Close(){
+        this.dialogContentElement = "";
+            this.dialogElement.style.display = "none";
     }
 }

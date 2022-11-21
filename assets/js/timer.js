@@ -29,6 +29,7 @@ class Timer {
     ResetTimer(startAmountInSeconds) {
         this.CurrentValue = startAmountInSeconds * 1000;
         this.HowMuchPassed = 0;
+        this.DisplayTimer();
     }
 
     DisplayTimer() {
