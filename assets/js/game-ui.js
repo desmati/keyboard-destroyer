@@ -66,11 +66,36 @@ class GameUI {
     DisplayStart() {
         let dialog = new Dialog();
         dialog.Display(`
-            <div>
-            Hey welcome to the game stupid
-
-rules rules ruless ruuuuleeesss rules booooring ruuuiules
+            <div id="start-game-intro">
+                Hey welcome to the game stupid
+                rules rules ruless ruuuuleeesss rules booooring ruuuiules
             </div>
+            <button id="start-game-btn">Start Game</button>
         `);
+
+        let startButtonElement = document.getElementById('start-game-btn');
+        startButtonElement.addEventListener('click', () => {
+            dialog.Close();
+        });
+    }
+
+    DisplayLossDialog(game) {
+        let dialog = new Dialog();
+        dialog.Display(`
+            <div id="start-game-intro">
+                <h2>You Lost</h2>
+            </div>
+            <div id="score-board-content"></div>
+            <button id="restart-game-btn">Restart Game</button>
+        `);
+
+        let restartButtonElement = document.getElementById('restart-game-btn');
+        restartButtonElement.addEventListener('click', () => {
+            dialog.Close();
+            game.Restart();
+        });
+
+        let scoreboardContentElement = document.getElementById('score-board-content');
+        scoreboardContentElement.innerHTML = document.getElementById('gameboard__scoreboard').innerHTML;
     }
 }
