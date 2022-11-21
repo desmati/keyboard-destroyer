@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keaboard destroyer</title>
     <link href="./assets/css/style.css" rel="stylesheet">
+    <link href="./assets/css/dialog.css" rel="stylesheet">
 </head>
 
 <body>
@@ -31,10 +33,15 @@
             <span id="gameboard__key">D</span>
         </div>
         <div id="gameboard__container">
-            <div id="gameboard__container__progress">
+            <div id="gameboard__progress">
                 <progress max="100" value="70"></progress>
             </div>
         </div>
+    </div>
+
+    <div id="dialog">
+        <div id="dialog__close">X</div>
+        <div id="dialog__content"></div>
     </div>
 
     <script src="./assets/js/container.js"></script>
