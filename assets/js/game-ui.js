@@ -101,13 +101,47 @@ class GameUI {
       "gameboard__scoreboard"
     ).innerHTML;
   }
-  DisplayWinDialog(game) {
+  DisplayWinDialog(game, timer) {
     let dialog = new Dialog();
     dialog.Display(`
             <div id="start-game-intro">
                 <h2>You Win</h2>
             </div>
-            <div id="score-board-content"></div>
+            <h3>Type your name:</h3>
+            <input id = "nameInput" type = "text">
+            <button id="submit-name-btn">Submit Game</button>
+        `);
+    let scoreboard = new Scoreboard();
+
+    let nameInput = document.getElementById("nameInput");
+    let submitGameButton = document.getElementById("submit-name-btn");
+    submitGameButton.addEventListener("click", () => {
+      scoreboard.AddUser(nameInput.value, timer.HowMuchPassed);
+      this.DisplayScoreboard(game);
+    });
+  }
+
+  DisplayScoreboard(game) {
+    let database = new Database();
+
+    database.Get((data) => {
+      console.log(data.docs);
+    });
+
+    let dialog = new Dialog();
+    dialog.Display(`
+          
+            <div id="score-board-content">
+            <div id="gameboard__scoreboard">
+            <h2>Scoreboard</h2>
+            <ol id="gameboard__scores">
+             
+            </ol>
+            <h3>Your score</h3>
+            <span id="gameboard__your-score">You (3.5 k/s)</span>
+           
+        </div>
+            </div>
             <button id="restart-game-btn">Restart Game</button>
         `);
 
@@ -116,12 +150,5 @@ class GameUI {
       dialog.Close();
       game.Restart();
     });
-
-    let scoreboardContentElement = document.getElementById(
-      "score-board-content"
-    );
-    scoreboardContentElement.innerHTML = document.getElementById(
-      "gameboard__scoreboard"
-    ).innerHTML;
   }
 }

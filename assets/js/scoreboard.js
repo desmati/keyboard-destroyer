@@ -1,20 +1,21 @@
 class Scoreboard {
+  AddUser(name, time) {
+    let data = {
+      name,
+      time: (time / 1000).toFixed(2),
+      date: new Date(),
+    };
+    let database = new Database();
+    database.Add(data);
+  }
 
-    AddUser(name, time) {
-        var data = {
-            name,
-            time,
-            date: new Date()
-        };
-    }
+  FetchData() {}
 
-    FetchData() { }
+  SaveData() {}
 
-    SaveData() { }
+  DrawScoreboard() {}
 
-    DrawScoreboard() { }
+  PlayersList() {}
 
-    PlayersList() { }
-
-    SaveScore(userName, score) { }
+  SaveScore(userName, score) {}
 }
