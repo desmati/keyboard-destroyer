@@ -5,13 +5,15 @@ const config = {
     increaseAmount: 30,
     decreaseAmount: 0,
     maxKeyPress: 1,
+    scoreboardCount:5,
     db: {
-
-        apiKey: "AIzaSyAx8r9nI-wHx7GvXfTaemm8FVDBo7PTATI",
-        authDomain: "keyboard-destoryer-2.firebaseapp.com",
-        projectId: "keyboard-destoryer-2",
-        storageBucket: "keyboard-destoryer-2.appspot.com",
-        messagingSenderId: "958605190160",
-        appId: "1:958605190160:web:c50732c8332776b15a5695"
+        apiKey: "AIzaSyBVbu5MI6HJfMIp5R0dMS7b2QW6VpIGWsA",
+        authDomain: "desmati-30ce9.firebaseapp.com",
+        databaseURL: "https://desmati-30ce9-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "desmati-30ce9",
+        storageBucket: "desmati-30ce9.appspot.com",
+        messagingSenderId: "623141315290",
+        appId: "1:623141315290:web:2de9de5544ecb6191e7be3",
+        measurementId: "G-SBKECL9WBP"
     }
 };

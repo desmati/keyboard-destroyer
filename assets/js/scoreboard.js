@@ -1,11 +1,20 @@
 class Scoreboard {
-  FetchData() {}
 
-  SaveData() {}
+    AddUser(name, time) {
+        var data = {
+            name,
+            time,
+            date: new Date()
+        };
+    }
 
-  DrawScoreboard() {}
+    FetchData() { }
 
-  PlayersList() {}
+    SaveData() { }
 
-  SaveScore(userName, score) {}
+    DrawScoreboard() { }
+
+    PlayersList() { }
+
+    SaveScore(userName, score) { }
 }
