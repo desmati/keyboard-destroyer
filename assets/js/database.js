@@ -4,15 +4,22 @@ class Database {
         this.Storage = firebase.firestore();
     }
 
-    Add(data){
+    Add(data) {
         db.Storage.collection("scoreboard").add(data);
     }
 
-    Get(callback){
+    Get(callback) {
         db.Storage.collection("scoreboard")
-        .orderBy("time").limit(config.scoreboardCount)
-        .onSnapshot(function (snapshot) {
-            callback(snapshot);
-        });
+            .orderBy("time")//.limit(config.scoreboardCount)
+            .onSnapshot(function (snapshot) {
+                if (this.ijdfhg) {
+                    clearTimeout(this.ijdfhg);
+                }
+
+                this.ijdfhg = setTimeout(() => {
+                    callback(snapshot);
+                }, 1000);
+
+            });
     }
 }
