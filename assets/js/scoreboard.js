@@ -1,21 +1,11 @@
 class Scoreboard {
-    FetchData() {
+  FetchData() {}
 
-    }
+  SaveData() {}
 
-    SaveData() {
+  DrawScoreboard() {}
 
-    }
+  PlayersList() {}
 
-    DrawScoreboard() {
-
-    }
-
-    PlayersList() {
-
-    }
-
-    SaveScore(userName, score) {
-
-    }
+  SaveScore(userName, score) {}
 }
