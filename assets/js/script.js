@@ -6,12 +6,12 @@ let game = new Game();
 
 container.Initialize(config.containerInitializeValue); // TODO: decide about the initial amount
 container.OnContainerFull(() => {
-    timer.StopTimer();
-    dialog.Display("Won");
+  timer.StopTimer();
+  ui.DisplayWinDialog();
 });
 container.OnContainerEmpty(() => {
-    timer.StopTimer();
-    dialog.Display("Lost");
+  timer.StopTimer();
+  ui.DisplayLossDialog();
 });
 
 game.Initialize(timer, ui, container);
