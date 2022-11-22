@@ -1,8 +1,19 @@
 const config = {
-  containerInitializeValue: 30,
-  startTime: 30,
-  keySpeedInterval: 500,
-  increaseAmount: 30,
-  decreaseAmount: 0,
-  maxKeyPress: 1,
+    containerInitializeValue: 30,
+    startTime: 30,
+    keySpeedInterval: 500,
+    increaseAmount: 30,
+    decreaseAmount: 0,
+    maxKeyPress: 1,
+    scoreboardCount:5,
+    db: {
+        apiKey: "AIzaSyBVbu5MI6HJfMIp5R0dMS7b2QW6VpIGWsA",
+        authDomain: "desmati-30ce9.firebaseapp.com",
+        databaseURL: "https://desmati-30ce9-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "desmati-30ce9",
+        storageBucket: "desmati-30ce9.appspot.com",
+        messagingSenderId: "623141315290",
+        appId: "1:623141315290:web:2de9de5544ecb6191e7be3",
+        measurementId: "G-SBKECL9WBP"
+    }
 };
