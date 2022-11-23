@@ -42,10 +42,11 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  animation-duration: 0.5s;
 }
 
-#start-game-btn:focus {
-  scale: 1.05;
+#start-game-btn:hover {
+  border: 1px solid var(--text-color);
 }
 
 #you-win-msg {
@@ -68,7 +69,7 @@
   font-weight: bold;
   font-size: 1.3rem;
   margin-top: 3rem;
-  padding: 1.3rem 3rem;
+  padding: 5rem 5rem;
   border-radius: var(--border-radius);
   background-color: var(--btn-background-color);
   border: 1px solid var(--btn-border-color);
@@ -77,9 +78,21 @@
 }
 
 #nameInput {
-  padding: 0.3rem;
+  padding: 0.5rem;
   border-radius: 2px;
   margin: 1rem;
+  border: 1px solid var(--btn-border-color);
+  background-color: var(--btn-background-color);
+  text-align: center;
+  border-radius: var(--border-radius);
+  color: white;
+  -webkit-text-stroke: 0 var(--text-outline-color);
+}
+
+#nameInput:focus {
+  border: 2px solid var(--btn-border-color);
+  outline: none;
+  color: white;
 }
 
 #submit-name-btn {
