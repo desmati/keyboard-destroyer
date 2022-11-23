@@ -1,30 +1,78 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    border: 0 none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0 none;
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
+  height: 100vh;
+  width: 100vw;
+}
+
+:root {
+  --background-color: black;
+  --btn-background-color: #ce311a;
+  --btn-border-color: #d9d9d9;
+  --text-color: #c7af5f;
+  --text-outline-color: black;
+  --border-radius: 5px;
 }
 
 #gameboard {
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--background-color);
 }
 
-#gameboard__scoreboard {
-    position: absolute;
-    top: 5%;
-    left: 10%;
+#gameboard__timer {
+  padding: 1rem 4rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  background-color: var(--btn-background-color);
+  color: var(--text-color);
+  border: 1px solid var(--btn-border-color);
+  -webkit-text-stroke: 1px var(--text-outline-color);
+  border-radius: var(--border-radius);
+}
+
+#gameboard__current-key {
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding: 1rem 1.7rem;
+  margin-top: 2rem;
+  background-color: var(--btn-background-color);
+  color: var(--text-color);
+  -webkit-text-stroke: 1px var(--text-outline-color);
+  border: 1px solid var(--btn-border-color);
+  border-radius: var(--border-radius);
+}
+
+#gameboard__progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #gameboard__container progress {
-    rotate: -90deg;
-    margin-top: 50%;
+  transform: rotate(-90deg);
+  margin-top: 50%;
+  margin-bottom: 50%;
+  width: 300px;
+  height: 80px;
+}
+
+#gameboard__speed {
+  padding: 1rem 4rem;
+  font-size: 1.7rem;
+  font-weight: bold;
+  background-color: var(--btn-background-color);
+  color: var(--text-color);
+  border: 1px solid var(--btn-border-color);
+  -webkit-text-stroke: 1px var(--text-outline-color);
+  border-radius: var(--border-radius);
 }
