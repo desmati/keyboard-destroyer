@@ -1,4 +1,5 @@
 class GameUI {
+
   constructor() {
     this.gameboardkey = document.getElementById("gameboard__key");
     this.yourSpeedElement = document.getElementById("gameboard__your-speed");
@@ -13,27 +14,32 @@ class GameUI {
     this.KeyPressesCount = 0;
   }
 
-  HandleUserInput(container, timer, increaseAmount, decreaseAmount) {
-    window.addEventListener("keyup", (e) => {
-      if (!container.isFreezed) {
-        var key = e.key.toUpperCase();
 
-        if (this.CurrentKey === key) {
-          container.Increase(increaseAmount);
-          this.RemainedKeyStrokes--;
-          this.KeyPressesCount++;
-        } else {
-          container.Decrease(decreaseAmount);
-        }
+    HandleUserInput(container, timer, increaseAmount, decreaseAmount) {
+        window.addEventListener("keyup", (e) => {
+            if (!container.isFreezed) {
+                var key = e.key.toUpperCase();
 
-        if (this.RemainedKeyStrokes === 0) {
-          // this.MaxKeyPress = Math.floor(Math.random() * 3);
-          this.RandomChangeInput(this.MaxKeyPress);
-          this.DisplayKey();
-        }
-      }
-    });
-  }
+                if (this.CurrentKey === key) {
+                    container.Increase(increaseAmount);
+                    this.RemainedKeyStrokes--;
+                    this.KeyPressesCount++;
+
+                    let media = config.media.eating[Math.floor(Math.random() * (config.media.eating.length - 1))];
+                    let player = new AudioPlayer();
+                    player.Play(media);
+                } else {
+                    container.Decrease(decreaseAmount);
+                }
+
+                if (this.RemainedKeyStrokes === 0) {
+                    // this.MaxKeyPress = Math.floor(Math.random() * 3);
+                    this.RandomChangeInput(this.MaxKeyPress);
+                    this.DisplayKey();
+                }
+            }
+        });
+    }
 
   RandomChangeInput(maxKeyPress) {
     this.MaxKeyPress = maxKeyPress;
@@ -73,11 +79,23 @@ class GameUI {
             
         `);
 
-    let startButtonElement = document.getElementById("start-game-btn");
-    startButtonElement.addEventListener("click", () => {
-      dialog.Close();
-    });
-  }
+
+        let startButtonElement = document.getElementById("start-game-btn");
+        startButtonElement.addEventListener("click", () => {
+            dialog.Close();
+        });
+
+        startButtonElement.addEventListener('mouseenter', () => {
+            let player = new AudioPlayer();
+            player.Play(config.media.hover);
+        });
+
+        startButtonElement.addEventListener('mousedown', () => {
+            let player = new AudioPlayer();
+            player.Play(config.media.click);
+        });
+
+    }
 
   DisplayLossDialog(game) {
     let dialog = new Dialog();
