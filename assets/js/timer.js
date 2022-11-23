@@ -1,39 +1,39 @@
 class Timer {
+  constructor() {
+    this.HowMuchPassed = 0;
+  }
 
-    constructor() {
-        this.HowMuchPassed = 0;
-    }
+  StartTimer() {
+    this.Interval = setInterval(() => {
+      this.CurrentValue -= 100;
+      this.HowMuchPassed += 100;
+      this.DisplayTimer();
 
-    StartTimer() {
-        this.Interval = setInterval(() => {
-            this.CurrentValue -= 100;
-            this.HowMuchPassed += 100;
-            this.DisplayTimer();
+      if (this.CurrentValue <= 0) {
+        this.StopTimer();
+        this.callback();
+      }
+    }, 100);
+  }
 
-            if (this.CurrentValue <= 0) {
-                this.StopTimer();
-                this.callback();
-            }
+  OnTimeUpEvent(callback) {
+    this.callback = callback;
+  }
 
-        }, 100);
-    }
+  StopTimer() {
+    clearInterval(this.Interval);
+  }
 
-    OnTimeUpEvent(callback) {
-        this.callback = callback;
-    }
+  ResetTimer(startAmountInSeconds) {
+    this.CurrentValue = startAmountInSeconds * 1000;
+    this.HowMuchPassed = 0;
+    this.DisplayTimer();
+  }
 
-    StopTimer() {
-        clearInterval(this.Interval);
-    }
-
-    ResetTimer(startAmountInSeconds) {
-        this.CurrentValue = startAmountInSeconds * 1000;
-        this.HowMuchPassed = 0;
-        this.DisplayTimer();
-    }
-
-    DisplayTimer() {
-        let gameboardTimer = document.getElementById('gameboard__timer');
-        gameboardTimer.innerHTML = (parseFloat(this.CurrentValue / 1000.0).toFixed(1)).padStart(4, '0');
-    }
+  DisplayTimer() {
+    let gameboardTimer = document.getElementById("gameboard__timer");
+    gameboardTimer.innerHTML = parseFloat(this.CurrentValue / 1000.0)
+      .toFixed(2)
+      .padStart(4, "0");
+  }
 }
