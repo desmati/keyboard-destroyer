@@ -22,6 +22,10 @@ class GameUI {
                     container.Increase(increaseAmount);
                     this.RemainedKeyStrokes--;
                     this.KeyPressesCount++;
+
+                    let media = config.media.eating[Math.floor(Math.random() * (config.media.eating.length - 1))];
+                    let player = new AudioPlayer();
+                    player.Play(media);
                 } else {
                     container.Decrease(decreaseAmount);
                 }
@@ -75,6 +79,17 @@ class GameUI {
         startButtonElement.addEventListener("click", () => {
             dialog.Close();
         });
+
+        startButtonElement.addEventListener('mouseenter', () => {
+            let player = new AudioPlayer();
+            player.Play(config.media.hover);
+        });
+
+        startButtonElement.addEventListener('mousedown', () => {
+            let player = new AudioPlayer();
+            player.Play(config.media.click);
+        });
+
     }
 
     DisplayLossDialog(game) {
