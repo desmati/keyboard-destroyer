@@ -9,14 +9,4 @@ class Scoreboard {
         let database = new Database();
         database.Add(data);
     }
-
-    FetchData() { }
-
-    SaveData() { }
-
-    DrawScoreboard() { }
-
-    PlayersList() { }
-
-    SaveScore(userName, score) { }
 }

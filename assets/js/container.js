@@ -4,8 +4,8 @@ class Container {
         this.isFreezed = false;
     }
 
-    Initialize(startValue) {
-        this.Percentage = startValue;
+    Initialize() {
+        this.Percentage = config.containerInitializeValue;
         this.UpdateContent();
     }
 
@@ -36,11 +36,13 @@ class Container {
         this.container.value = this.Percentage;
     }
 
-    OnContainerFull(callbackFull) {
-        this.callbackFull = callbackFull;
+    OnContainerFull() {
+        Factory.Timer.StopTimer();
+        Factory.UI.DisplayWinDialog();
     }
 
-    OnContainerEmpty(callbackEmpty) {
-        this.callbackEmpty = callbackEmpty;
+    OnContainerEmpty() {
+        Factory.Timer.StopTimer();
+        Factory.UI.DisplayLossDialog();
     }
 }

@@ -14,6 +14,7 @@ class AudioPlayer {
             this.audioElement.id = this.id;
             this.audioElement.muted = true;
             this.audioElement.src = file;
+            this.audioElement.autoplay = true;
             this.audioElement.preload = "auto";
             this.audioElement.addEventListener("ended", () => {
                 this.audioElement.remove();
