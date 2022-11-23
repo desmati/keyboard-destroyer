@@ -1,0 +1,16 @@
+#gameboard__progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container-progress {
+    width: 30rem;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+}

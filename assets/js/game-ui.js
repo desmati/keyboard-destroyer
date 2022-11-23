@@ -12,42 +12,57 @@ class GameUI {
         this.CurrentKeyPressesCount = 0;
         this.RemainedKeyStrokes = 1;
         this.KeyPressesCount = 0;
+
+        this.areEventsSetup = {};
     }
 
 
     HandleUserInput() {
-        window.addEventListener("keyup", (e) => {
-            if (!Factory.Container.isFreezed) {
-                var key = e.key.toUpperCase();
+        if (!this.areEventsSetup["window.keyup"]) {
+            window.addEventListener("keyup", (e) => {
+                this.areEventsSetup["window.keyup"] = true;
+                if (!Factory.Container.isFreezed) {
+                    var key = e.key.toUpperCase();
 
-                if (this.CurrentKey === key) {
-                    Factory.Container.Increase(config.increaseAmount);
-                    this.RemainedKeyStrokes--;
-                    this.KeyPressesCount++;
+                    if (this.CurrentKey === key) {
+                        Factory.Container.Increase(config.increaseAmount);
+                        this.RemainedKeyStrokes--;
+                        this.KeyPressesCount++;
 
-                    let player = new AudioPlayer();
-                    player.Play(PickRandom(config.media.eating));
-                } else {
-                    Factory.Container.Decrease(config.decreaseAmount);
-                    let player = new AudioPlayer();
-                    player.Play(PickRandom(config.media.angry));
+                        let player = new AudioPlayer();
+                        player.Play(PickRandom(config.media.eating));
+                    } else {
+                        Factory.Container.Decrease(config.decreaseAmount);
+                        let player = new AudioPlayer();
+                        player.Play(PickRandom(config.media.angry));
+                    }
+
+                    if (this.RemainedKeyStrokes === 0) {
+                        // this.MaxKeyPress = Math.floor(Math.random() * 3);
+                        // this.RandomChangeInput(this.MaxKeyPress);
+                        // this.DisplayKey();
+                    }
                 }
-
-                if (this.RemainedKeyStrokes === 0) {
-                    // this.MaxKeyPress = Math.floor(Math.random() * 3);
-                    this.RandomChangeInput(this.MaxKeyPress);
-                    this.DisplayKey();
-                }
-            }
-        });
+            });
+        }
     }
 
     RandomChangeInput() {
+        if (this.keyTimeout) {
+            clearTimeout(this.keyTimeout);
+        }
+
         this.MaxKeyPress = config.maxKeyPress;
         this.RemainedKeyStrokes = config.maxKeyPress;
 
         let random = Math.floor(Math.random() * this.KeyList.length);
         this.CurrentKey = this.KeyList[random];
+        this.DisplayKey();
+
+        let timeout = Math.random() * 2000;
+        this.keyTimeout = setTimeout(() => {
+            this.RandomChangeInput();
+        }, timeout);
     }
 
     StartCountdown() {
@@ -61,10 +76,10 @@ class GameUI {
 
         let countdownElement = document.getElementById('countdown');
         countdownElement.innerHTML = config.initialCountdown;
-        let time = (config.initialCountdown - 1) * 1000;
+        let time = config.initialCountdown * 1000;
         this.countdown = setInterval(() => {
             if (time % 1000 === 0) {
-                countdownElement.innerHTML = (time / 1000);
+                countdownElement.innerHTML = Math.floor((time - 1) / 1000);
             }
 
             time = time - 1000;
@@ -72,10 +87,10 @@ class GameUI {
             if (time === 0) {
                 clearInterval(this.countdown);
                 dialog.Close();
-                Factory.Game.Restart();
+                Factory.Game.StartGame();
             }
         }, 1000);
-        Factory.Game.Restart();
+
     }
 
     DisplayKey() {
@@ -139,22 +154,17 @@ class GameUI {
             <div id="start-game-intro">
                 <h2>You Lost</h2>
             </div>
-            <div id="score-board-content"></div>
             <button id="restart-game-btn">Restart Game</button>
         `);
 
         let restartButtonElement = document.getElementById("restart-game-btn");
         restartButtonElement.addEventListener("click", () => {
             dialog.Close();
-            Factory.Game.Restart();
+            Factory.UI.StartCountdown();
         });
 
-        let scoreboardContentElement = document.getElementById(
-            "score-board-content"
-        );
-        scoreboardContentElement.innerHTML = document.getElementById(
-            "gameboard__scoreboard"
-        ).innerHTML;
+        // let scoreboardContentElement = document.getElementById("score-board-content");
+        // scoreboardContentElement.innerHTML = document.getElementById("gameboard__scoreboard").innerHTML;
     }
     DisplayWinDialog() {
         let dialog = new Dialog();
@@ -164,7 +174,7 @@ class GameUI {
             </div>
             <div id="input-container">
             <h3>Pick a name human!</h3>
-            <input id = "nameInput" type = "text">
+            <input autocomplete="off" id = "nameInput" type = "text">
             <button id="submit-name-btn">Submit Game</button>
             </div>
         `);
@@ -173,6 +183,7 @@ class GameUI {
         let nameInput = document.getElementById("nameInput");
         let submitGameButton = document.getElementById("submit-name-btn");
         submitGameButton.addEventListener("click", () => {
+            submitGameButton.disabled = true;
             scoreboard.AddUser(nameInput.value, Factory.Timer.HowMuchPassed, this.KeySpeed);
             this.DisplayScoreboard(nameInput.value);
         });
@@ -228,7 +239,7 @@ class GameUI {
                     ` +
                 (isPlayerInTop
                     ? ""
-                    : `Your Rank is ${place}${record.time}s${record.speed}k/s`) +
+                    : `Your Rank is ${place}, ${record.time}s, ${record.speed}k/s`) +
                 `
                 </div>
             </div>
@@ -238,7 +249,7 @@ class GameUI {
             let restartButtonElement = document.getElementById("restart-game-btn");
             restartButtonElement.addEventListener("click", () => {
                 dialog.Close();
-                Factory.Game.Restart();
+                Factory.UI.StartCountdown();
             });
         });
     }

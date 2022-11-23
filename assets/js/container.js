@@ -1,11 +1,15 @@
 class Container {
     constructor() {
-        this.container = document.querySelector("#gameboard__container progress");
+        // this.container = document.querySelector("#gameboard__container progress");
+        //this.container = document.getElementById("gameboard");
+        this.container = document.getElementById("container-progress");
+        this.explosion = document.getElementById("explosion-effect");
         this.isFreezed = false;
     }
 
     Initialize() {
         this.Percentage = config.containerInitializeValue;
+        this.isFreezed = false;
         this.UpdateContent();
     }
 
@@ -33,12 +37,28 @@ class Container {
     }
 
     UpdateContent() {
-        this.container.value = this.Percentage;
+        //this.container.value = this.Percentage;
+        let frameNo = Math.floor(this.Percentage / (100 / (config.animationFramesCount - 1)));
+        if (frameNo > config.animationFramesCount) {
+            frameNo = config.animationFramesCount;
+        }
+        if (frameNo < 0) {
+            frameNo = 0;
+        }
+
+        let media = `/assets/images/animation/f (${frameNo}).png`;
+
+        // this.container.style.backgroundImage = `url('${media}')`;
+        this.container.src = media;
     }
 
     OnContainerFull() {
         Factory.Timer.StopTimer();
-        Factory.UI.DisplayWinDialog();
+        this.explosion.style.display = 'block';
+        setTimeout(() => {
+            this.explosion.style.display = 'none';
+            Factory.UI.DisplayWinDialog();
+        }, 2000);
     }
 
     OnContainerEmpty() {
