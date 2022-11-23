@@ -22,6 +22,7 @@ const config = {
         click: './assets/media/click.mp3',
         meow: './assets/media/meow.mp3',
         blink: './assets/media/blink.mp3',
+        gameover: './assets/media/game-over.mp3',
         eating: ['./assets/media/eating1.mp3', './assets/media/eating2.mp3', './assets/media/eating3.mp3'],
         angry: ['./assets/media/cat-angry-1.mp3', './assets/media/cat-angry-2.mp3', './assets/media/cat-angry-3.mp3'],
     }

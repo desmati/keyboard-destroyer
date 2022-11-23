@@ -60,8 +60,8 @@ class GameUI {
         `);
 
         let countdownElement = document.getElementById('countdown');
-        countdownElement.innerHTML = config.initialCountdown + 1;
-        let time = config.initialCountdown * 1000;
+        countdownElement.innerHTML = config.initialCountdown;
+        let time = (config.initialCountdown - 1) * 1000;
         this.countdown = setInterval(() => {
             if (time % 1000 === 0) {
                 countdownElement.innerHTML = (time / 1000);
@@ -131,6 +131,9 @@ class GameUI {
     }
 
     DisplayLossDialog() {
+        let player = new AudioPlayer();
+        player.Play(config.media.gameover);
+
         let dialog = new Dialog();
         dialog.Display(`
             <div id="start-game-intro">
