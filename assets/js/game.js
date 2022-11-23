@@ -1,11 +1,7 @@
 class Game {
-  constructor() {}
+  constructor() { }
 
-  Initialize(timer, ui, container) {
-    this.timer = timer;
-    this.ui = ui;
-    this.container = container;
-
+  Initialize() {
     this.Restart();
   }
 
@@ -14,30 +10,25 @@ class Game {
       return;
     }
 
-    this.timer.ResetTimer(config.startTime);
-    this.timer.StartTimer();
-    this.timer.OnTimeUpEvent(() => {
-      ui.DisplayLossDialog(this);
-      this.container.Freeze();
+    Factory.Timer.ResetTimer();
+    Factory.Timer.StartTimer();
+    Factory.Timer.OnTimeUpEvent(() => {
+      Factory.UI.DisplayLossDialog();
+      Factory.Container.Freeze();
     });
 
-    ui.RandomChangeInput(config.maxKeyPress);
-    ui.DisplayKey();
-    ui.DisplayKeySpeed(config.keySpeedInterval, this.container, this.timer);
-    ui.HandleUserInput(
-      this.container,
-      this.timer,
-      config.increaseAmount,
-      config.decreaseAmount
-    );
+    Factory.UI.RandomChangeInput();
+    Factory.UI.DisplayKey();
+    Factory.UI.DisplayKeySpeed();
+    Factory.UI.HandleUserInput();
 
     this.started = true;
   }
 
   Restart() {
     this.started = false;
-    this.container.Initialize(config.containerInitializeValue);
-    this.timer.ResetTimer(config.startTime);
+    Factory.Container.Initialize();
+    Factory.Timer.ResetTimer();
     window.addEventListener("keydown", this.StartGame.bind(this));
   }
 }

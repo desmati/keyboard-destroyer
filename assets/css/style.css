@@ -1,23 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  border: 0 none;
-}
 
-body {
-  height: 100vh;
-  width: 100vw;
-}
-
-:root {
-  --background-color: black;
-  --btn-background-color: #ce311a;
-  --btn-border-color: #d9d9d9;
-  --text-color: #c7af5f;
-  --text-outline-color: black;
-  --border-radius: 5px;
-}
 
 #gameboard {
   display: flex;

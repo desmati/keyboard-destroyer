@@ -9,7 +9,7 @@
   width: 100vw;
   height: 100vh;
   padding: 1rem;
-  background-color: black;
+  background-color: var(--background-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
@@ -24,6 +24,7 @@
 .img-meow {
   width: 600px;
 }
+
 .img-eyes {
   width: 100px;
   margin: 4rem 0 5rem 0;

@@ -24,8 +24,8 @@ class Timer {
     clearInterval(this.Interval);
   }
 
-  ResetTimer(startAmountInSeconds) {
-    this.CurrentValue = startAmountInSeconds * 1000;
+  ResetTimer() {
+    this.CurrentValue = config.startTime * 1000;
     this.HowMuchPassed = 0;
     this.DisplayTimer();
   }

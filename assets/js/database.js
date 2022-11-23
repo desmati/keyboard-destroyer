@@ -10,15 +10,15 @@ class Database {
 
     Get(callback) {
         db.Storage.collection("scoreboard")
-            .orderBy("time")//.limit(config.scoreboardCount)
+            .orderBy("time")
             .onSnapshot(function (snapshot) {
-                if (this.ijdfhg) {
-                    clearTimeout(this.ijdfhg);
+                if (this.updateTimeout) {
+                    clearTimeout(this.updateTimeout);
                 }
 
-                this.ijdfhg = setTimeout(() => {
+                this.updateTimeout = setTimeout(() => {
                     callback(snapshot);
-                }, 1000);
+                }, 500);
 
             });
     }

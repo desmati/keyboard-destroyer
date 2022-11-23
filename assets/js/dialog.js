@@ -5,7 +5,7 @@ class Dialog {
     this.dialogContentElement = document.getElementById("dialog__content");
   }
 
-  Display(content, showClose) {
+  Display(content) {
     this.dialogContentElement.innerHTML = content;
     this.dialogElement.style.display = "flex";
   }
