@@ -1,3 +1,4 @@
 Factory.UI.DisplayInitialDialog();
-// Factory.Game.Restart();
-// Factory.UI.DisplayStart();
+
+// If you want to start the game withouth the initial dialogs, uncomment the line below and comment the above line
+// Factory.Game.StartGame();

@@ -6,21 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keyboard destroyer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
     <link href="./assets/css/reset.css" rel="stylesheet">
     <link href="./assets/css/style.css" rel="stylesheet">
+    <link href="./assets/css/container.css" rel="stylesheet">
     <link href="./assets/css/dialog.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
+    <img src="./assets/images/explosion.gif" id="explosion-effect">
     <div id="gameboard">
         <div id="gameboard__timer">10:00</div>
         <div id="gameboard__current-key">
-            <span id="gameboard__key">D</span>
+            <span id="gameboard__key"></span>
         </div>
         <div id="gameboard__container">
-            <div id="gameboard__progress">
-                <progress max="100" value="70"></progress>
+            <div id="gameboard__progress" style="background: url('./assets/images/animation/f (1).png');">
+                <progress style="display: none;" max="100" value="70"></progress>
+                <img id="container-progress" src="./assets/images/animation/f (1).png" />
             </div>
             <div id="gameboard__speed">
                 <span id="gameboard__your-speed">0</span>
@@ -30,7 +35,6 @@
     </div>
 
     <div id="dialog">
-
         <div id="dialog__content"></div>
     </div>
 

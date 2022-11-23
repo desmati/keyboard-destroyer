@@ -1,12 +1,13 @@
 const config = {
     containerInitializeValue: 30,
-    startTime: 30,
+    startTime: 15,
     keySpeedInterval: 500,
-    increaseAmount: 5,
-    decreaseAmount: 0,
-    maxKeyPress: 1,
+    increaseAmount: 3,
+    decreaseAmount: 4,
+    maxKeyPress: 5,
     scoreboardCount: 5,
-    initialCountdown:3,
+    animationFramesCount: 34,
+    initialCountdown: 3,
     db: {
         apiKey: "AIzaSyBVbu5MI6HJfMIp5R0dMS7b2QW6VpIGWsA",
         authDomain: "desmati-30ce9.firebaseapp.com",
