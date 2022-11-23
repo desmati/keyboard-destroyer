@@ -19,6 +19,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: var(--text-color);
 }
 
 .img-meow {
@@ -30,7 +31,8 @@
   margin: 4rem 0 5rem 0;
 }
 
-#start-game-btn {
+#start-game-btn,
+.btn {
   font-weight: bold;
   font-size: 1.3rem;
   margin-top: 3rem;
@@ -167,4 +169,19 @@
   border: 1px solid var(--btn-border-color);
   color: var(--text-color);
   -webkit-text-stroke: 1px var(--text-outline-color);
+}
+
+#countdown-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  text-align: center;
+}
+
+#countdown-container span {
+  font-size: 20rem;
 }

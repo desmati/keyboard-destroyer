@@ -25,11 +25,12 @@ class GameUI {
                     this.RemainedKeyStrokes--;
                     this.KeyPressesCount++;
 
-                    let media = config.media.eating[Math.floor(Math.random() * (config.media.eating.length - 1))];
                     let player = new AudioPlayer();
-                    player.Play(media);
+                    player.Play(PickRandom(config.media.eating));
                 } else {
                     Factory.Container.Decrease(config.decreaseAmount);
+                    let player = new AudioPlayer();
+                    player.Play(PickRandom(config.media.angry));
                 }
 
                 if (this.RemainedKeyStrokes === 0) {
@@ -47,6 +48,34 @@ class GameUI {
 
         let random = Math.floor(Math.random() * this.KeyList.length);
         this.CurrentKey = this.KeyList[random];
+    }
+
+    StartCountdown() {
+        let dialog = new Dialog();
+
+        dialog.Display(`
+            <div id="countdown-container">
+                <span id="countdown">3</span>
+            </div>
+        `);
+
+        let countdownElement = document.getElementById('countdown');
+        countdownElement.innerHTML = config.initialCountdown + 1;
+        let time = config.initialCountdown * 1000;
+        this.countdown = setInterval(() => {
+            if (time % 1000 === 0) {
+                countdownElement.innerHTML = (time / 1000);
+            }
+
+            time = time - 1000;
+
+            if (time === 0) {
+                clearInterval(this.countdown);
+                dialog.Close();
+                Factory.Game.Restart();
+            }
+        }, 1000);
+        Factory.Game.Restart();
     }
 
     DisplayKey() {
@@ -86,6 +115,12 @@ class GameUI {
 
         startButtonElement.addEventListener("animationend", () => {
             dialog.Close();
+            this.StartCountdown();
+        });
+
+        startButtonElement.addEventListener("mouseenter", () => {
+            let player = new AudioPlayer();
+            player.Play(config.media.hover);
         });
 
         startButtonElement.addEventListener('mousedown', () => {
@@ -153,7 +188,6 @@ class GameUI {
                 i++
             ) {
                 var record = data.docs[i].data();
-                console.log({ i, record });
                 if (record.name === name) {
                     isPlayerInTop = true;
                     place = i + 1;
@@ -168,11 +202,8 @@ class GameUI {
             }
 
             if (!isPlayerInTop) {
-                console.log("is not on top");
-                // <li>23 - Player (10 k/s)</li>
                 for (let i = 0; i < data.docs.length; i++) {
                     var record = data.docs[i].data();
-                    console.log({ i, record });
                     if (record.name === name) {
                         place = i + 1;
                         break;
@@ -181,27 +212,25 @@ class GameUI {
             }
 
             let dialog = new Dialog();
-            dialog.Display(
-                `
-        <div id="you-win-msg">
-        <h2>Congrats!</h2>
-    </div>
-                <div id="score-board-content">
-                    <div id="gameboard__scoreboard">
-                        <h2>Scoreboard</h2>
-                        <ul id="gameboard__scores">
-                            ${listElementsHtml}
-                        </ul>
-                        ` +
+            dialog.Display(`
+            <div id="you-win-msg">
+                <h2>Congrats!</h2>
+            </div>
+            <div id="score-board-content">
+                <div id="gameboard__scoreboard">
+                    <h2>Scoreboard</h2>
+                    <ul id="gameboard__scores">
+                        ${listElementsHtml}
+                    </ul>
+                    ` +
                 (isPlayerInTop
                     ? ""
                     : `Your Rank is ${place}${record.time}s${record.speed}k/s`) +
                 `
-                    </div>
                 </div>
-                <button id="restart-game-btn">Restart Game</button>
-            `
-            );
+            </div>
+            <button id="restart-game-btn">Restart Game</button>
+            `);
 
             let restartButtonElement = document.getElementById("restart-game-btn");
             restartButtonElement.addEventListener("click", () => {
@@ -218,13 +247,14 @@ class GameUI {
                 Feed Frank as much as you can by pressing the specified key!
                 <br/>
                 <br/>
-                <button id="go-btn">Go!</button>
+                <button class="btn" id="go-btn">Go!</button>
             </div>
         `);
 
         let goButtonElement = document.getElementById("go-btn");
         goButtonElement.addEventListener("click", () => {
             dialog.Close();
+            this.DisplayStart();
         });
     }
 }

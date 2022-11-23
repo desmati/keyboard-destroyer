@@ -6,6 +6,7 @@ const config = {
     decreaseAmount: 0,
     maxKeyPress: 1,
     scoreboardCount: 5,
+    initialCountdown:3,
     db: {
         apiKey: "AIzaSyBVbu5MI6HJfMIp5R0dMS7b2QW6VpIGWsA",
         authDomain: "desmati-30ce9.firebaseapp.com",
@@ -22,5 +23,6 @@ const config = {
         meow: './assets/media/meow.mp3',
         blink: './assets/media/blink.mp3',
         eating: ['./assets/media/eating1.mp3', './assets/media/eating2.mp3', './assets/media/eating3.mp3'],
+        angry: ['./assets/media/cat-angry-1.mp3', './assets/media/cat-angry-2.mp3', './assets/media/cat-angry-3.mp3'],
     }
 };

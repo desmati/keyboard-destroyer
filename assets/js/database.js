@@ -5,11 +5,11 @@ class Database {
     }
 
     Add(data) {
-        db.Storage.collection("scoreboard").add(data);
+        Factory.DB.Storage.collection("scoreboard").add(data);
     }
 
     Get(callback) {
-        db.Storage.collection("scoreboard")
+        Factory.DB.Storage.collection("scoreboard")
             .orderBy("time")
             .onSnapshot(function (snapshot) {
                 if (this.updateTimeout) {

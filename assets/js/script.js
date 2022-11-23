@@ -1,3 +1,3 @@
-Factory.Container.Initialize();
-Factory.Game.Initialize();
-Factory.UI.DisplayStart();
+Factory.UI.DisplayInitialDialog();
+// Factory.Game.Restart();
+// Factory.UI.DisplayStart();

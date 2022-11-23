@@ -1,10 +1,6 @@
 class Game {
   constructor() { }
 
-  Initialize() {
-    this.Restart();
-  }
-
   StartGame() {
     if (this.started) {
       return;

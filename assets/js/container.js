@@ -12,7 +12,7 @@ class Container {
     Increase(value) {
         this.Percentage += value;
         if (this.Percentage >= 100) {
-            this.callbackFull();
+            this.OnContainerFull();
             this.Freeze();
         }
         this.UpdateContent();
@@ -21,7 +21,7 @@ class Container {
     Decrease(value) {
         this.Percentage -= value;
         if (this.Percentage <= 0) {
-            this.callbackEmpty();
+            this.OnContainerEmpty();
             this.Freeze();
         }
         this.UpdateContent();
