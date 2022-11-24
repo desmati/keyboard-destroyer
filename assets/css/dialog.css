@@ -14,6 +14,34 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
+.game-instructions {
+  font-size: 2rem;
+  animation-duration: 0.5s;
+}
+
+.btn,
+.msg {
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-top: 3rem;
+  padding: 1.5rem 3.5rem;
+  border-radius: var(--border-radius);
+  /* background-color: var(--btn-background-color); */
+  background-color: black;
+  color: var(--text-color);
+  -webkit-text-stroke: 1px var(--text-outline-color);
+  box-shadow: rgb(208, 188, 11) 3px 3px 6px 0px inset,
+    rgba(227, 198, 7, 0.5) -3px -3px 6px 1px inset;
+  animation-duration: 0.5s;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  scale: 1.02;
+  box-shadow: rgb(208, 188, 11) 3px 3px 6px 0px inset,
+    rgba(227, 198, 7, 0.5) -3px -3px 6px 1px inset;
+}
+
 #start-game-intro,
 #dialog__content {
   display: flex;
@@ -24,48 +52,16 @@
 }
 
 .img-meow {
-  width: 600px;
+  width: 400px;
 }
 
 .img-eyes {
   width: 100px;
   margin: 4rem 0 5rem 0;
-}
-
-#start-game-btn,
-.btn {
-  font-weight: bold;
-  font-size: 1.3rem;
-  margin-top: 3rem;
-  padding: 1.5rem 3.5rem;
-  border-radius: var(--border-radius);
-  background-color: var(--btn-background-color);
-  border: 1px solid var(--btn-border-color);
-  color: var(--text-color);
-  -webkit-text-stroke: 1px var(--text-outline-color);
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   animation-duration: 0.5s;
 }
 
-#start-game-btn:hover {
-  border: 1px solid var(--text-color);
-}
-
-#you-win-msg {
-  font-weight: bold;
-  font-size: 1.3rem;
-  margin-top: 3rem;
-  padding: 1.3rem 3rem;
-  border-radius: var(--border-radius);
-  background-color: var(--btn-background-color);
-  border: 1px solid var(--btn-border-color);
-  color: var(--text-color);
-  -webkit-text-stroke: 1px var(--text-outline-color);
-}
-
-#input-container {
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,10 +71,12 @@
   margin-top: 3rem;
   padding: 5rem 9rem;
   border-radius: var(--border-radius);
-  background-color: var(--btn-background-color);
-  border: 1px solid var(--btn-border-color);
+  background-color: black;
+
   color: var(--text-color);
   -webkit-text-stroke: 1px var(--text-outline-color);
+  box-shadow: rgb(208, 188, 11) 3px 3px 6px 0px inset,
+    rgba(227, 198, 7, 0.5) -3px -3px 6px 1px inset;
 }
 
 #nameInput {
@@ -86,7 +84,7 @@
   border-radius: 2px;
   margin: 1rem;
   border: 1px solid var(--btn-border-color);
-  background-color: var(--btn-background-color);
+  background-color: black;
   text-align: center;
   border-radius: var(--border-radius);
   color: var(--btn-border-color);
@@ -100,29 +98,21 @@
   color: white;
 }
 
-#submit-name-btn {
-  font-size: 1.1rem;
-  padding: 1rem 1.5rem;
-  border-radius: 5px;
-  margin: 1rem;
-  background-color: var(--text-color);
-  border: 1px solid var(--text-outline-color);
-}
-
 #score-board-content {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-weight: bold;
-  font-size: 1.3rem;
-  margin-top: 3rem;
-  padding: 1.3rem 3rem;
+  font-size: 1.6rem;
+  margin-top: 1.5rem;
+  padding: 2rem 5rem;
   border-radius: var(--border-radius);
-  background-color: var(--btn-background-color);
-  border: 1px solid var(--btn-border-color);
-  color: var(--btn-border-color);
+  background-color: black;
+  color: var(--text-color);
   -webkit-text-stroke: 1px var(--text-outline-color);
+  box-shadow: rgb(208, 188, 11) 3px 3px 6px 0px inset,
+    rgba(227, 198, 7, 0.5) -3px -3px 6px 1px inset;
 }
 
 #gameboard__scoreboard {
@@ -138,6 +128,8 @@
 
 #gameboard__scoreboard ul li {
   padding: 0.5rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .scoreboard-place,
@@ -145,6 +137,8 @@
 .scoreboard-score {
   border: 1px solid var(--btn-border-color);
   border-radius: 5px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .scoreboard-place {
@@ -162,16 +156,8 @@
   padding: 0.3rem 0.5rem;
 }
 
-#restart-game-btn {
-  font-weight: bold;
-  font-size: 1.3rem;
-  margin-top: 3rem;
-  padding: 1.3rem 3rem;
-  border-radius: var(--border-radius);
-  background-color: var(--btn-background-color);
-  border: 1px solid var(--btn-border-color);
-  color: var(--text-color);
-  -webkit-text-stroke: 1px var(--text-outline-color);
+.your-score-container {
+  display: flex;
 }
 
 #countdown-container {
