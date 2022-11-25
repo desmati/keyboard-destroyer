@@ -2,7 +2,7 @@ const config = {
   containerInitializeValue: 30,
   startTime: 15,
   keySpeedInterval: 500,
-  increaseAmount: 4,
+  increaseAmount: 3,
   decreaseAmount: 4,
   maxKeyPress: 5,
   scoreboardCount: 5,
