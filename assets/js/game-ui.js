@@ -161,7 +161,7 @@ class GameUI {
     dialog.Display(`
             <div id="start-game-intro">
             <div class = "game-instructions" id = "gameInstructions">
-                Frank is hungry! Feed Frank until he explode by pressing the displayed key!
+                Frank is hungry! Feed Frank until he explodes by pressing the displayed key as fast as possible!
                 </div>
                 <br/>
                 <br/>
