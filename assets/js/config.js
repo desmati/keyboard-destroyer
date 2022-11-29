@@ -2,8 +2,9 @@ const config = {
   containerInitializeValue: 30,
   startTime: 15,
   keySpeedInterval: 500,
-  increaseAmount: 7,
-  decreaseAmount: 4,
+
+  increaseAmount: 4,
+  decreaseAmount: 3,
   maxKeyPress: 5,
   scoreboardCount: 5,
   animationFramesCount: 34,
