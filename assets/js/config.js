@@ -3,8 +3,8 @@ const config = {
   startTime: 15,
   keySpeedInterval: 500,
 
-  increaseAmount: 4,
-  decreaseAmount: 3,
+  increaseAmount: 5,
+  decreaseAmount: 2,
   maxKeyPress: 5,
   scoreboardCount: 5,
   animationFramesCount: 34,
